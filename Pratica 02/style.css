@@ -1,0 +1,48 @@
+body{
+	background: rgb(0,77,154);
+	font-family:Verdana;
+}
+
+h1,h2,h3,h4,h5{
+	color:rgb(239,205,0);
+	text-align: center;
+}	
+
+p{
+	color: white;
+	text-align: justify;
+}
+* {
+  box-sizing: border-box;
+}
+.menu {
+  float:left;
+  width:20%;
+  text-align:center;
+}
+.menu a {
+  padding:8px;
+  margin-top:7px;
+  display:block;
+  width:100%;
+  color:rgb(204,33,40);
+}
+.main {
+  float:left;
+  width:60%;
+  padding:0 20px;
+}
+.right {
+  float:left;
+  width:20%;
+  padding:15px;
+  margin-top:-14px;
+  text-align:center;
+}
+
+@media only screen and (max-width:620px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width:100%;
+  }
+}
