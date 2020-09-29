@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Loja de Informática JF</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="estilo.css"> <!-- Defindo a referencia de onde o html ira pegar o estilo -->
+	<script>
+		var Numcompras=0;
+		var produtos = [];
+		produtos[1] = {nome:"Computador", valor:'1999.99'};
+		produtos[2] = {nome:"Impressora", valor:'499.99'};
+		produtos[3] = {nome:"Mouse", valor:'89.99'};
+		produtos[4] = {nome:"Monitor", valor:'499.99'};
+
+		function MostraPreco(){ /*Funcao respondavel para buscar o preco do produto selecionado*/
+			var lista = document.getElementById('produtos.nome').value;
+			if (lista != 'Selecione') {
+				document.getElementById('quantidade').disabled = false;
+				for (var i = 1; i < 5; i++){
+					if (lista == produtos[i].nome) {
+						document.getElementById("precoUnitario").innerHTML = produtos[i].valor;
+					}
+				}
+			}
+			else {
+				document.getElementById('quantidade').disabled = true;
+				document.getElementById("precoUnitario").innerHTML ='';
+				document.getElementById("precoTotal").innerHTML ='';
+			}
+		}
+		function vtotal() { /*Calcula o valor total em relacão a quantidade de produtos selecionados*/
+			var qtd = parseInt(document.getElementById('quantidade').value);
+			var precou = document.getElementById('produtos.nome').value;
+			var ValorT;
+			if (precou != 'Selecione') {
+				for (var i = 1; i < 5; i++){
+					if (precou == produtos[i].nome) {
+						if (qtd==1){
+							ValorT=produtos[i].valor*qtd;
+							document.getElementById("precoTotal").innerHTML = parseFloat(ValorT.toFixed(2));
+						}
+						if (qtd==2){
+							ValorT=produtos[i].valor*qtd;
+							document.getElementById("precoTotal").innerHTML = parseFloat(ValorT.toFixed(2));
+						}	
+						if (qtd==3){
+							ValorT=produtos[i].valor*qtd;
+							document.getElementById("precoTotal").innerHTML = parseFloat(ValorT.toFixed(2));
+						}
+						if (qtd==4){
+							ValorT=produtos[i].valor*qtd;
+							document.getElementById("precoTotal").innerHTML = parseFloat(ValorT.toFixed(2));
+						}
+						if (qtd==5){
+							ValorT=produtos[i].valor*qtd;
+							document.getElementById("precoTotal").innerHTML = parseFloat(ValorT.toFixed(2));
+						}
+					}
+				}
+			}
+		}
+		function Resetar() /*atualiza a pagina, fazendo que tudo volte para o inicio sem nenhum valor*/
+		{
+			window.location.reload();
+		}
+		function CriarTabela() { /*Responsavel por criar a tabela quando clicar em adicionar ao carrinho*/
+			var precou = document.getElementById('produtos.nome').value;
+			if (precou == 'Selecione')
+			{
+				alert("Selecione um produto!")
+			}
+			else{
+				var cabecalho = document.getElementById("cabecalho");
+				var corpo = document.getElementById("corpo")
+				if (Numcompras==0){
+					Numcompras=1;
+					var row = cabecalho.insertRow();    
+					var item = row.insertCell();   
+					var desc = row.insertCell();  
+					var qtde = row.insertCell();   
+					var preu = row.insertCell(); 
+					var pret = row.insertCell(); 
+
+					item.innerHTML = "Item";  
+					desc.innerHTML = "Descrição";
+					qtde.innerHTML = "Qtde";  
+					preu.innerHTML = "Preço Unitário";
+					pret.innerHTML = "Preço Total"; 
+
+					var row2 = corpo.insertRow();
+					var item = row2.insertCell();
+					var desc = row2.insertCell();  
+					var qtde = row2.insertCell();   
+					var preu = row2.insertCell(); 
+					var pret = row2.insertCell(); 
+
+					var nomeP = document.getElementById('produtos.nome').value;
+					var precoU = document.getElementById('precoUnitario').innerHTML;
+					var precoT = document.getElementById('precoTotal').innerHTML;
+					var qtd = parseInt(document.getElementById('quantidade').value);
+
+					item.innerHTML = Numcompras;
+					desc.innerHTML = nomeP;
+					qtde.innerHTML = qtd;
+					preu.innerHTML = precoU;
+					pret.innerHTML = precoT;
+
+					Numcompras++;
+				}
+				else {
+					var row = corpo.insertRow();
+					var item = row.insertCell();
+					var desc = row.insertCell();  
+					var qtde = row.insertCell();   
+					var preu = row.insertCell(); 
+					var pret = row.insertCell(); 
+
+					var lista = document.getElementById('produtos.nome').value;
+					var precoU = document.getElementById('precoUnitario').innerHTML;
+					var precoT = document.getElementById('precoTotal').innerHTML;
+					var qtd = parseInt(document.getElementById('quantidade').value);
+
+					item.innerHTML = Numcompras;
+					desc.innerHTML = lista;
+					qtde.innerHTML = qtd;
+					preu.innerHTML = precoU;
+					pret.innerHTML = precoT;
+					Numcompras++;
+				}
+			}
+			
+		}
+
+	</script>
+</head>
+<body>
+	<div style="overflow:auto">		
+
+		<div class="menu">
+			<h2 style="text-align: center;">Links dos detalhes dos produtos</h2>
+			<h3><a href="https://www.americanas.com.br/produto/1326847201?opn=YSMESP&sellerid=13035177000256&epar=bp_pl_00_go_inf_notebooks_todas_geral_gmv&WT.srch=1&acc=e789ea56094489dffd798f86ff51c7a9&i=581d5be6eec3dfb1f84a39d6&o=5dd64da8f8e95eac3d782b4f&gclid=Cj0KCQjwtsv7BRCmARIsANu-CQfEesPrJ_XvEaMgi0EKb6fQYEHLzt9Ybwn2Z6sQI1_9wMBEuNOwz-0aAoKXEALw_wcB">Link Computador</a>
+				<a href="https://www.casasbahia.com.br/Informatica/impressoramultifuncional/JatodeTinta/multifuncional-hp-deskjet-ink-advantage-2376-impressora-copiadora-e-scanner-55010110.html?utm_medium=Cpc&utm_source=GP_PLA&IdSku=55010110&idLojista=10037&utm_campaign=info_smart_multifuncional&gclid=Cj0KCQjwtsv7BRCmARIsANu-CQcD4e2tnFYwytHqLn_SI8xa-23U2yjLJ-e6rrTDjpXZr483n4y-jjkaAu0oEALw_wcB">Link Impressora</a>
+				<a href="https://www.amazon.com.br/Mouse-%C3%93ptico-Wireless-WM126-Preto/dp/B01B96M16E/ref=asc_df_B01B96M16E/?tag=googleshopp00-20&linkCode=df0&hvadid=379713309507&hvpos=&hvnetw=g&hvrand=4733860367733413491&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1001575&hvtargid=pla-501749023912&psc=1">Link Mouse</a>
+				<a href="https://www.mercadolivre.com.br/monitor-lg-20mk400hb-led-195-preto-110v220v/p/MLB15121865?matt_tool=90090532&matt_word=&gclid=Cj0KCQjwtsv7BRCmARIsANu-CQe2wjjHzqkvzIL-ZwTjBDtMggcMRyMYT-ONCn6C7HsZ4IFaSQVgdm0aAiF9EALw_wcB">Link Monitor</a>
+			</h3>
+		</div>
+
+		<div class="main">
+			<h1>Bem-vindo à Loja Virtual da JF Infomática</h1>
+			<h2>Selecione o produto e quantidade desejados para adicionar ao seu carrinho</h2>
+			<div class="div1"> <!-- referencia para estilo do css -->
+				<p class="paragrafo"> <!-- referencia para estilo do css -->
+					Selecione o produto
+					<select id="produtos.nome" onchange="MostraPreco();vtotal()"> <!-- chamada da funcao -->
+						<option>Selecione</option>
+						<option>Computador</option>
+						<option>Impressora</option>
+						<option>Mouse</option>
+						<option>Monitor</option>
+
+					</select>
+				</p>
+				<p class="paragrafo"> <!-- referencia para estilo do css -->
+					Selecione a quantidade
+					<select id="quantidade" disabled="true" onchange="vtotal()"> <!-- chamada da funcao -->
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+
+				</p>
+				<p class="paragrafo , ex1"><!-- referencia para estilo do css -->
+					Preço unitário: <p class="ex1"  id="precoUnitario"></p>
+				</p>
+				<p class="paragrafo , ex1"><!-- referencia para estilo do css -->
+					Preço total: <p class="ex1"  id="precoTotal"></p>	
+				</p>
+				<p><button id="btn_adicionar" onclick="CriarTabela()">Adicionar ao carrinho</button></p> <!-- chamada da funcao -->
+			</div>
+			<h2>Itens Comprados:</h2>
+
+
+			<table id="tabela" style="border-collapse: collapse; border-style: solid; border-color: black;" border="1px">
+				<thead id="cabecalho" ></thead>
+				<tbody id="corpo" ></tbody>
+			</table>
+
+
+			<p><button name="btn_reseta" onclick="Resetar()">Esvaziar carrinho</button></p> <!-- chamada da funcao -->
+			<!-- <h2>Valor total do pedido:</h2> -->
+		</div>
+	</div>
+</body>
+</html>
