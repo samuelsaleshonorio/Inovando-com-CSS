@@ -2,7 +2,7 @@ p.ex1 {
 	display: inline;
 }
 *{
-	font-family:Verdana;
+	font-family: sans-serif;
 }
 
 h1,h2{
@@ -11,7 +11,7 @@ h1,h2{
 }
 
 body{
-	background: rgb(0,77,154);
+	background: #232531;
 	
 }
 
